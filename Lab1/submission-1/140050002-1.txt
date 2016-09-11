@@ -1,0 +1,108 @@
+Q.3
+There are mainly 4 parts.
+
+Left panel :
+	Register ( Int Regs[16]) : contains details about every registers
+	FP Regs : don't understand yet
+Right panel :
+	Text : contains information 00400000about assembly code and insturctions in following way.
+		[memory addr of instruction], content of instruction in hex, MIPS code (using numbers to represent register), MIPS code written by user, comments
+	Data : memory addr, data in hex, data in ASCII
+
+Information Console lists the actions performed by the simulator.
+
+
+
+
+Q.4
+Program begins at memory address 00400000 which can be seen under "text" in right panel
+
+No, "li" is not MIPS instruction. It is pseudo instruction. It translates into "ori" (can be seen under "text" in right panel)
+
+Instruction; machine code; OP code
+li $t0, 1; 34080001; 001101
+addi $t1, $t0, 2; 21090002; 001000
+li $v0, 10; 3402000a; 001101
+syscall; 0000000c; 000000
+
+
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+Demo
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+Q.4 
+
+Code : in add.s file
+.text
+main:
+# Your code starts from the line below
+li $t0, 1
+addi $t1, $t0, 2
+li $v0, 10
+syscall
+
+
+Observation : Register, Value
+v0, a
+a0, 3
+a1, 7ffff76c
+a2, 7ffff77c
+t0, 1
+t1, 3 -------------- addition of 1 and 2
+gp, 10008000
+sp, 7ffff768
+ra, 400018
+rest are 0
+
+
+
+
+Q.5
+Using "step", we can see each instruction executing one at a time
+
+
+
+Q.6
+Appropriate breakpoint is at "li $t0, 1" line. as after that code apart from main function starts.
+Breakpoint can be set by right clicking on instruction in "text" window.
+
+
+
+Q.7
+li is replaced by approprite lui and ori command
+code : in add_q7.s file
+.text
+main:
+# Your code starts from the line below
+lui $t0, 4096
+ori $t0, $t0, 1
+lui $t1, 8192
+ori $t1, $t1, 2
+add $t2, $t0, $t1 #stores sum
+li $v0, 10
+syscall
+
+
+Q.8
+code : in add_arry.s file
+.data
+N: .word 5
+X: .word 2 4 6 8 10
+SUM: .word 0
+.text
+main:
+#code starts here
+lw $s0, N # counter for loop
+la $t0, X
+li $s1, 0 # tempsum
+loop : lw $t1, 0($t0)
+add $s1, $s1, $t1
+addi $t0, $t0, 4
+addi $s0, $s0, -1
+bne $s0, $0, loop
+sw $s1, SUM # store the final tota
+li $v0, 10
+syscall

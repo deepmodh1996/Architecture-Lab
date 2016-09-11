@@ -1,0 +1,30 @@
+140050002
+
+1.	Attempt to execute non-instruction
+		Try to execute code which is not an instruction. Here not appropriate operands are given to "or" instruction
+			.text
+			main:
+			lui $s0, 30000
+			or $s1, $s0, 80000 		# causes exception
+			addi $s2, $s1, 1
+
+2. 	Arithmetic overflow
+		result of sum is outside of 32 bits can store
+			.text
+			main:
+			lui $s0, 32767
+			ori $s1, $s0, 65535
+			addi $s2, $s1, 1		# causes exception
+
+3.	Unaligned address in inst/data fetch
+		word must be stored in address that is multiple of 4
+			.text
+			main:
+			ori $t1, $0, 1
+			lw $0, 4($t1)			# causes exception
+
+4.	Bad address in data/stack read
+		Trying to access the address which is bad. accessing address 0
+			.text
+			main:
+			lw $0, 0($0)			# causes exception

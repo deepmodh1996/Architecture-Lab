@@ -1,0 +1,27 @@
+140050002
+
+Q.2 [A]
+
+	Cross - Compiler is complier, which compiles code for one computer system on a different system.
+	Host platform is the computer system on which cross-compiler is compiling.
+	Target platform is the computer system for which cross-compiler is compiling.
+
+Q.2 [B]
+	Linux is used as Host platform.
+	MIPS is used as Target platform.
+
+
+Q.4
+
+gcd_noopt.s   153 steps
+gcd_basic.s   58 steps
+
+fibonacci_noopt.s 3242 step
+fibonacci_basic.s 2205 step
+
+Q.5
+
+in handwritten version we know that which registers are not needed to be stored before hand. so we do not save them.
+whereas without optimization, all the registers are stored.
+
+in code by compiler, it uses frame to store values whereas i used stack to store whenever necessary.
