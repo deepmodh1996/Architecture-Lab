@@ -1,0 +1,8 @@
+140050002
+
+Q.1
+	bnez requires it's input during IF stage. 
+	According to clock diagram, R-Stall occurs in IF stage.
+
+Q.2 to Q.9
+	observations are written in pdf itself ( not even in assembly files )
