@@ -11,3 +11,4 @@ This contains work done in course of "Computer Architecture Lab" during Autumn 2
 |5|Understanding SPIM Exception handling|
 |6|Exploring Pipelining with WinDLX|
 |7|Advanced Pipelining and Optimization|
+|8|Memory Caching|
