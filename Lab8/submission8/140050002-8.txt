@@ -1,0 +1,37 @@
+
+Q.4
+	command used : 
+		./dineroIV -maxcount VALUEOFN -informat d -l1-usize 4K -l1-ubsize 16 -l1-uwalloc a -l1-uwback a -l1-uassoc 1  -l1-uccc < /PATH/TO/File
+
+	value of N : first value of N for which value of Demand Miss and Compulsary Misses are different.
+		cc1.din 	: 	225
+		spice.din 	:	2072
+		tex.din 	: 	82
+
+Q.5	
+Impact of Cache Size :
+	As Cache size increases, miss rate decreases.
+	This happens because now more values ( data, instructions ) can be stored in cache.
+
+
+
+Q.6
+
+Impact of Block Size :
+	
+	As Block size increases, miss rate first decreases then increases slightly.
+	
+	Initially, as block size increase; more sequential bytes of instruction and data can be kept in cache. Because of nature of spatial locality; miss rate decrease.
+	
+	However for very large value of block size; only few different collection of continuous bytes can be kept in cache. Thus if there is temporal locality such that two different values need to be stored in same cache block, miss rate increases. This affacts data miss rate more than code miss rate. ( likely because of accessing two different data structures )
+
+
+Q.7 
+
+Impact of Associativity :
+	
+	As associativity increases, miss rate decreases then becomes almost constant.
+	
+	Initially, for less associativity; if data resides in same cache block, block must remove earlier data to accomodate new data. Due to temporal locality, data is frequently needed thus cache must be refreshed frequently causing high miss rate. Also entire capacity of cache is not likely used. 
+
+	After one point it is more likely that amount of data having same block address is less than amount of space assoiciated with each block. Thus giving more space in cache for data having same block address does not effect cache miss occuring because of conflict of block address. Hence increase of associativity does not impact miss rate.
